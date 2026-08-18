@@ -1,0 +1,45 @@
+{
+  "cookies": [
+    {
+      "name": "SESSION_TIMEOUT",
+      "value": "1787032990689_43200",
+      "domain": "mephisto-uat.hotwax.io",
+      "path": "/webtools/control/checkLogin",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SESSION_TIMEOUT",
+      "value": "1787032991801_43200",
+      "domain": "mephisto-uat.hotwax.io",
+      "path": "/commerce/control",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "2BD53DA4C78A3B57CCCF7216870FD1D6.jvm1",
+      "domain": "mephisto-uat.hotwax.io",
+      "path": "/webtools",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "BA648A0E04F45F2D17ABA27C4622754F.jvm1",
+      "domain": "mephisto-uat.hotwax.io",
+      "path": "/commerce",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

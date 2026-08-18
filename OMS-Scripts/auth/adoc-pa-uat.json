@@ -1,0 +1,45 @@
+{
+  "cookies": [
+    {
+      "name": "SESSION_TIMEOUT",
+      "value": "1785213424510_43200",
+      "domain": "adoc-pa-uat.hotwax.io",
+      "path": "/webtools/control/checkLogin",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SESSION_TIMEOUT",
+      "value": "1785213424711_43200",
+      "domain": "adoc-pa-uat.hotwax.io",
+      "path": "/commerce/control",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "74989656BD93EC98CA65C88098829ADF.jvm1",
+      "domain": "adoc-pa-uat.hotwax.io",
+      "path": "/webtools",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "F0E22F9C8D34B5898AD5E4A318F63153.jvm1",
+      "domain": "adoc-pa-uat.hotwax.io",
+      "path": "/commerce",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

@@ -1,0 +1,26 @@
+node_modules/
+.env
+.env.local
+.env.*
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+*.png
+*.webm
+*.zip
+
+# IDEs and OS
+.DS_Store
+.idea/
+.vscode/
+
+# Local test data and logs generated during seeding
+data/
+*.log
+
+# Scratch files
+*.txt
+!README.txt

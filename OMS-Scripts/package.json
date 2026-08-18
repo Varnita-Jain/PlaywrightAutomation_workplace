@@ -1,0 +1,29 @@
+{
+  "name": "playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright end-to-end testing suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "test:report": "npx monocart show-report ./playwright-report/index.html",
+    "test:client": "playwright test --project=\"$CLIENT - Chromium\"",
+    "test:oms": "playwright test tests/Order_Types/Sales_Order",
+    "test:oms:seed": "node data_seeding/seedData.js",
+    "auth:clear": "node -e \"require('./utils/auth').clearAllSessions()\""
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "e2e"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "dotenv": "^17.4.2",
+    "monocart-reporter": "^2.10.1"
+  }
+}
