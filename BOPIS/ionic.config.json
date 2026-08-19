@@ -1,0 +1,7 @@
+{
+  "name": "bopis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

@@ -1,0 +1,49 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*~
+*.sw[mnpcod]
+.tmp
+*.tmp
+*.tmp.*
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
+
+*.log
+log.txt
+npm-debug.log*
+.env
+.env.*
+.history
+
+/.idea
+/.ionic
+/.sass-cache
+/.sourcemaps
+/.versions
+/.vscode
+/coverage
+/dist
+/node_modules
+/playwright-report
+/playwright/.auth
+/test-results
+/auth*.json
+/platforms
+/plugins
+/www
+.gradle
+
+# Keep example file
+!.env.example
+
+.firebase
+debugxyz.html
+
+# Local agent scratchpads and temp files
+/scratch/
+*.zip

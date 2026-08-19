@@ -1,0 +1,13 @@
+{
+  "appId": "co.hotwax.bopis",
+  "appName": "bopis",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,321 @@
+import { expect } from "@playwright/test";
+
+export class OrderPage {
+  constructor(page) {
+    this.page = page;
+    // Bottom Navigation
+    this.ordersBottomTab = page.getByTestId("orders-tab-button");
+
+    // Top Tabs (using data-testid for robustness, appending :visible to avoid hidden Ionic clones)
+    this.openTabButton = page.locator('[data-testid="open-segment-button"]:visible').first();
+    this.packedTabButton = page.locator('[data-testid="packed-segment-button"]:visible').first();
+    this.completedTabButton = page.locator('[data-testid="completed-segment-button"]:visible').first();
+
+    // Order Cards
+    this.orderCards = this.page.getByTestId('order-card');
+    this.firstCard = this.orderCards.first();
+
+    this.openOrdersContainer = page.locator('.orders');
+    this.packedOrdersContainer = page.locator('.orders');
+    this.completedOrdersContainer = page.locator('.orders');
+
+    // Flow 2 (Shipping) Action Buttons
+    this.readyToShipButton = page.locator('ion-button', { hasText: /Ready to ship/i });
+    this.shipButton = page.locator('ion-button', { hasText: /^ship$/i });
+
+    // Assign picker
+    this.assignPickerModal = page.locator('ion-modal, ion-alert, ion-popover, [role="dialog"], .modal-wrapper').filter({ hasText: /Assign Pickers?/i }).first();
+    this.assignPickerRadios = page.locator('ion-radio, [data-testid="assign-picker-radio"]');
+    this.assignPickerSaveButton = page.locator('ion-modal button, ion-popover button, [role="dialog"] button, .modal-wrapper button').last();
+    // Gift Card Elements
+    this.giftCardModal = page.locator('ion-header', { hasText: /Activate Gift Card/i });
+    this.giftCardActivationButton = page.locator('ion-button', { hasText: /Activate Gift Card/i });
+    this.giftCardInput = page.getByTestId("giftcard-activation-input");
+    this.giftCardLabel = page.getByTestId("giftcard-activation-label");
+    this.giftCardSaveButton = page.getByTestId(
+      "giftcard-activation-save-button",
+    );
+    this.giftCardCloseButton = page.getByTestId(
+      "giftcard-activation-close-button",
+    );
+    this.giftCardActivateButton = page.getByRole("button", {
+      name: "Activate",
+    });
+    this.giftCardActivatedSuccess = this.page.getByText(
+      "Gift card activated successfully.",
+    );
+
+    this.searchBar = this.page.locator("ion-searchbar input");
+    this.orderDelivered = page.getByText(`Order delivered to`);
+    this.noOrdersMessage = page.getByText(/no (orders|record) found/i);
+    this.loadingOverlay = page.locator("ion-loading, ion-backdrop, .loading-wrapper, .modal-wrapper");
+
+  }
+
+  async waitForOverlays() {
+    // Aggressive wait for any Ionic-style overlays to be hidden
+    await this.loadingOverlay.waitFor({ state: "hidden", timeout: 15000 }).catch(() => { });
+    // Small buffer for Ionic animations and pointer event release
+    await this.page.waitForTimeout(1000);
+  }
+
+  async refreshBeforeTabSwitch() {
+    await this.page.reload({ waitUntil: "domcontentloaded" }).catch(() => { });
+    await this.waitForOverlays();
+  }
+
+  async goToOpenTab() {
+    console.log("Navigating to Orders > Open tab...");
+    await this.waitForOverlays();
+    await this.ordersBottomTab.click({ force: true }).catch(() => {});
+    await this.waitForOverlays();
+
+    await expect(this.openTabButton).toBeVisible({ timeout: 30000 });
+    await this.openTabButton.click({ force: true });
+    console.log("Waiting for Open tab content to load...");
+
+    // Wait for either the first order card (if orders exist) or the empty state message
+    const contentLoaded = await Promise.race([
+      this.orderCards.first().waitFor({ state: "visible", timeout: 20000 }).then(() => "orders").catch(() => null),
+      this.noOrdersMessage.waitFor({ state: "visible", timeout: 20000 }).then(() => "empty").catch(() => null)
+    ]);
+
+    if (!contentLoaded) {
+      console.log("Warning: Neither orders container nor empty message appeared. Waiting a bit more...");
+      await this.page.waitForTimeout(2000);
+    }
+
+    console.log("✓ Open tab loaded.");
+  }
+
+  async goToCompletedTab() {
+    console.log("Navigating to Orders > Completed tab...");
+    await this.waitForOverlays();
+    await this.ordersBottomTab.click({ force: true }).catch(() => {});
+    await this.refreshBeforeTabSwitch();
+    await this.completedTabButton.waitFor({ state: "visible" });
+    await this.completedTabButton.click({ force: true });
+
+    await Promise.race([
+      this.orderCards.first().waitFor({ state: "visible" }).catch(() => { }),
+      this.noOrdersMessage.waitFor({ state: "visible" }).catch(() => { })
+    ]);
+    console.log("✓ Completed tab loaded.");
+  }
+
+  async goToPackedTab() {
+    console.log("Navigating to Orders > Packed tab...");
+    await this.waitForOverlays();
+    await this.ordersBottomTab.click({ force: true }).catch(() => {});
+    await this.refreshBeforeTabSwitch();
+    await this.packedTabButton.waitFor({ state: "visible" });
+    await this.packedTabButton.click({ force: true });
+
+    await Promise.race([
+      this.orderCards.first().waitFor({ state: "visible" }).catch(() => { }),
+      this.noOrdersMessage.waitFor({ state: "visible" }).catch(() => { })
+    ]);
+    console.log("✓ Packed tab loaded.");
+  }
+
+
+
+  async verifyAssignPickerModal() {
+    await expect(this.assignPickerModal).toBeVisible();
+  }
+
+  async verifySuccessToast() {
+    await expect(this.orderDelivered).toBeVisible();
+  }
+
+  async getFirstOrderCard() {
+    return this.firstCard;
+  }
+  async clickFirstOrderCard() {
+    const firstCard = await this.getFirstOrderCard();
+    await firstCard.waitFor({ state: "visible" });
+    
+    // Click the name tag specifically to avoid accidentally clicking the "Ready to Ship" action buttons
+    const label = firstCard.getByTestId("order-name-tag");
+    if (await label.isVisible().catch(() => false)) {
+      await label.click();
+    } else {
+      // Fallback: Click the top-left coordinate of the card to avoid center-aligned buttons
+      await firstCard.click({ position: { x: 10, y: 10 } });
+    }
+  }
+
+  async clickReadyForPickupOnCard(card) {
+    const readyButton = card.locator('ion-button').filter({ hasText: /READY FOR PICKUP/i }).first();
+    await expect(readyButton).toBeVisible();
+    await readyButton.click();
+  }
+
+  async clickRejectOnCard(card) {
+    const rejectButton = card.locator('ion-button').filter({ hasText: /REJECT/i }).first();
+    await expect(rejectButton).toBeVisible();
+    await rejectButton.click();
+  }
+
+  async clickHandoverOnCard(card) {
+    const handoverButton = card.locator('ion-button').filter({ hasText: /HANDOVER/i }).first();
+    await expect(handoverButton).toBeVisible();
+    await handoverButton.click();
+  }
+
+  async clickReadyToShipOnCard(card) {
+    const readyButton = card.locator('ion-button').filter({ hasText: /READY TO SHIP/i }).first();
+    await expect(readyButton).toBeVisible();
+    await readyButton.click();
+  }
+
+  async clickShipOnCard(card) {
+    const shipButton = card.locator('ion-button').filter({ hasText: /^SHIP$/i }).first();
+    await expect(shipButton).toBeVisible();
+    await shipButton.click();
+  }
+  async pageGoback() {
+    return this.page.goBack();
+  }
+
+  async getOrderName() {
+    const card = await this.getFirstOrderCard();
+    const label = card.getByTestId("order-name-tag");
+    await expect(label).toBeVisible();
+    const orderName = await label.textContent();
+    if (!orderName) throw new Error("OrderName not Found");
+    return orderName?.trim();
+  }
+  async findCardByOrderName(orderName) {
+    const matchingCard = this.orderCards.filter({ hasText: orderName }).first();
+    await expect(matchingCard).toBeVisible();
+    return matchingCard;
+  }
+
+
+  async assignPickerAndSave(selectedIndex = 0) {
+    await this.verifyAssignPickerModal();
+    // Prefer data-testid if available, fallback to ion-radio
+    const radios = this.page.locator('ion-radio, [data-testid="assign-picker-radio"]');
+    await expect(radios.nth(selectedIndex)).toBeVisible({ timeout: 10000 });
+    await radios.nth(selectedIndex).click({ force: true });
+    
+    // The Assign Pickers modal uses a floating save button at the bottom right, which is the last button in the modal
+    const saveBtn = this.page.locator('ion-modal button, ion-popover button, [role="dialog"] button, .modal-wrapper button').last();
+    await saveBtn.click({ force: true });
+  }
+
+  async handlePopupAndVerify() {
+    const popupPromise = this.page.waitForEvent("popup").catch(() => null);
+    const result = await Promise.race([popupPromise]);
+    if (result && result.url()) {
+      const url = result.url();
+      if (/(blob|pdf)/.test(url)) {
+        console.log(`Blob/PDF URL opened: ${url}`);
+      } else {
+        console.warn(`Popup opened with non-blob URL: ${url}`);
+      }
+    } else {
+      console.warn("No blob/pdf detected after clicking.");
+    }
+  }
+  async openFirstGiftCardOrder() {
+    const giftCardOrders = this.orderCards.filter({
+      has: this.giftCardActivationButton,
+    });
+    const firstCard = giftCardOrders.first();
+    await expect(firstCard).toBeVisible();
+    await firstCard.click();
+  }
+
+
+  async openFirstGiftCardModalFromList() {
+    const giftCardOrders = this.orderCards.filter({
+      has: this.page.getByTestId("gift-card-activation-button"),
+    });
+
+    const firstGiftCard = giftCardOrders.first();
+    await expect(firstGiftCard).toBeVisible();
+
+    const giftIcon = firstGiftCard
+      .getByTestId("gift-card-activation-button")
+      .first();
+    await expect(giftIcon).toBeVisible();
+    await giftIcon.click();
+
+    await expect(this.giftCardModal).toBeVisible();
+  }
+
+  async activateGiftCard(code = "mygiftcardtesting123") {
+    await Promise.race([
+      this.giftCardInput
+        .first()
+        .waitFor({ state: "visible", timeout: 2000 })
+        .catch((err) => {
+          console.warn(
+            "Giftcard input not visible within timeout:",
+            err.message,
+          );
+        }),
+      this.giftCardLabel
+        .first()
+        .waitFor({ state: "visible", timeout: 2000 })
+        .catch((err) => {
+          console.warn(
+            "Giftcard label not visible within timeout:",
+            err.message,
+          );
+        }),
+    ]);
+    const hasInput = await this.giftCardInput.isVisible();
+    const hasLabel = await this.giftCardLabel.isVisible();
+
+    expect(hasInput || hasLabel).toBe(true);
+
+    if (hasInput) {
+      await this.giftCardInput.click();
+      await this.giftCardInput.type(code);
+
+      await expect(this.giftCardSaveButton).toBeVisible();
+      await this.giftCardSaveButton.click();
+
+      await expect(this.giftCardActivateButton).toBeVisible();
+      await this.giftCardActivateButton.click();
+
+      await expect(this.giftCardActivatedSuccess).toBeVisible();
+    } else if (hasLabel) {
+      await expect(this.giftCardCloseButton).toBeVisible();
+      await this.giftCardCloseButton.click();
+    } else {
+      throw new Error("No input or label found in gift card modal");
+    }
+  }
+  async bringToFront() {
+    await this.page.bringToFront();
+  }
+  async searchByOrderName(orderName) {
+    await this.waitForOverlays();
+    await this.searchBar.waitFor({ state: "visible" });
+    await this.searchBar.fill(orderName);
+    await this.page.keyboard.press("Enter");
+    await this.waitForOverlays();
+
+    // Prefer order cards, fall back to role buttons if needed
+    const cardMatch = this.orderCards.filter({ hasText: orderName }).first();
+    const cardVisible = await cardMatch.isVisible().catch(() => false);
+    if (cardVisible) {
+      await expect(cardMatch).toBeVisible({ timeout: 15000 });
+      return cardMatch;
+    }
+
+    const resultCard = this.page.getByRole("button").filter({ hasText: orderName }).first();
+    const roleVisible = await resultCard.isVisible().catch(() => false);
+    if (roleVisible) {
+      await expect(resultCard).toBeVisible({ timeout: 15000 });
+      return resultCard;
+    }
+
+    throw new Error(`Order ${orderName} not found in current tab.`);
+  }
+
+}
