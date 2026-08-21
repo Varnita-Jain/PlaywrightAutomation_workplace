@@ -29,7 +29,7 @@ test.describe('Bulk Release Sales Orders from Report', () => {
 
   if (fs.existsSync(reportPath)) {
     const reportContent = fs.readFileSync(reportPath, 'utf8');
-    // Regex to match: **Imported to OMS:** Reference `OMS-AUTO-mephisto-testing-1781850574511`
+    // Regex to match: **Imported to OMS:** Reference `OMS-AUTO-client-testing-1781850574511`
     const regex = /\*\*Imported to OMS:\*\* Reference \`([A-Za-z0-9\-]+)\`/g;
     let match;
     while ((match = regex.exec(reportContent)) !== null) {

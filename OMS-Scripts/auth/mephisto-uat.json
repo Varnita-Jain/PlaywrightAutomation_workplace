@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "SESSION_TIMEOUT",
-      "value": "1787032990689_43200",
+      "value": "1787289716651_43200",
       "domain": "mephisto-uat.hotwax.io",
       "path": "/webtools/control/checkLogin",
       "expires": -1,
@@ -12,7 +12,7 @@
     },
     {
       "name": "SESSION_TIMEOUT",
-      "value": "1787032991801_43200",
+      "value": "1787289716754_43200",
       "domain": "mephisto-uat.hotwax.io",
       "path": "/commerce/control",
       "expires": -1,
@@ -22,7 +22,7 @@
     },
     {
       "name": "JSESSIONID",
-      "value": "2BD53DA4C78A3B57CCCF7216870FD1D6.jvm1",
+      "value": "201E6E7D493FDBAA2372A1EA613323E2.jvm1",
       "domain": "mephisto-uat.hotwax.io",
       "path": "/webtools",
       "expires": -1,
@@ -32,7 +32,7 @@
     },
     {
       "name": "JSESSIONID",
-      "value": "BA648A0E04F45F2D17ABA27C4622754F.jvm1",
+      "value": "D34DF04FA72E8BFABCE7040A85A1F4FE.jvm1",
       "domain": "mephisto-uat.hotwax.io",
       "path": "/commerce",
       "expires": -1,

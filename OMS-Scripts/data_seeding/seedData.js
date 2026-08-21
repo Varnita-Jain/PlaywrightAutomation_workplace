@@ -16,7 +16,7 @@ const { performLogin } = require('../utils/auth');
 const { getClientConfig } = require('../config/clients');
 
 async function seed() {
-    const client = process.env.CLIENT || 'krewe-uat';
+    const client = process.env.CLIENT;
     try {
         const numOrders = parseInt(process.env.NUM_ORDERS || '1', 10);
         const dataPath = path.join(__dirname, '../data');

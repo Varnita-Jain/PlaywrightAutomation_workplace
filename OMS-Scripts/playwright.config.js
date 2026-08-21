@@ -26,14 +26,14 @@ const generateProjects = () => {
       },
     });
 
-    // Firefox project
-    projects.push({
-      name: `${config.name} - Firefox`,
-      use: {
-        ...devices['Desktop Firefox'],
-        baseURL: config.baseUrl,
-      },
-    });
+    // Firefox project (Disabled to run on Chrome only)
+    // projects.push({
+    //   name: `${config.name} - Firefox`,
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     baseURL: config.baseUrl,
+    //   },
+    // });
   }
   return projects;
 };

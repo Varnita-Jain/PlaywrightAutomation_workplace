@@ -1,6 +1,6 @@
 const { test, expect } = require('../../fixtures/fixtures');
 
-test.describe.skip('Warehouse / Reconcile Inventories Flow', () => {
+test.describe('Warehouse / Reconcile Inventories Flow', () => {
 
   // ==========================================
   // TEST 1: Created Status

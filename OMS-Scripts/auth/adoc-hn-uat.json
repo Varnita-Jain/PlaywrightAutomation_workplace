@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "SESSION_TIMEOUT",
-      "value": "1786947662938_43200",
+      "value": "1787292790033_43200",
       "domain": "adoc-hn-uat.hotwax.io",
       "path": "/webtools/control/checkLogin",
       "expires": -1,
@@ -12,7 +12,7 @@
     },
     {
       "name": "SESSION_TIMEOUT",
-      "value": "1786947663149_43200",
+      "value": "1787292790137_43200",
       "domain": "adoc-hn-uat.hotwax.io",
       "path": "/commerce/control",
       "expires": -1,
@@ -22,7 +22,7 @@
     },
     {
       "name": "JSESSIONID",
-      "value": "BFAD54183D0F0E7E050D3B2620A95332.jvm1",
+      "value": "8F6335BBE017A28956D6CC0DD60B0232.jvm1",
       "domain": "adoc-hn-uat.hotwax.io",
       "path": "/webtools",
       "expires": -1,
@@ -32,7 +32,7 @@
     },
     {
       "name": "JSESSIONID",
-      "value": "164DAB48E4E6E83B391E6693DBA116B8.jvm1",
+      "value": "2ACF048F7FC60595FAC091C3BAD44E76.jvm1",
       "domain": "adoc-hn-uat.hotwax.io",
       "path": "/commerce",
       "expires": -1,

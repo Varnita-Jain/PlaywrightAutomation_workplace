@@ -35,7 +35,7 @@ const getClientConfig = (clientId) => {
   // TIER 2: Client-Specific Prefixed Env Vars (e.g., SM_UAT_URL)
   // =========================================================
   // This allows developers to quickly override configs via the terminal
-  // (e.g., `CLIENT=krewe-uat URL=http... npm run test:oms`)
+  // (e.g., `CLIENT=client-id-uat URL=http... npm run test:oms`)
   const prefix = getEnvPrefix(key);
   const baseUrl = process.env.URL || process.env[`${prefix}_URL`];
   const username = process.env.USERNAME || process.env[`${prefix}_USERNAME`];

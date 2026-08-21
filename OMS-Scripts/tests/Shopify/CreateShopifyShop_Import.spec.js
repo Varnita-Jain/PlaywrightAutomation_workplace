@@ -69,7 +69,7 @@ test.describe('Shopify Config / CreateShopifyShop Flow', () => {
 
     // Fill Access Token
     const tokenInput = authenticatedPage.locator('label:has-text("Access Token") ~ input, input[name="accessToken"], input#accessToken').first();
-    await tokenInput.fill('shpat_dummytoken1234567890');
+    await tokenInput.fill(process.env.DUMMY_SHOP_TOKEN || '');
 
     // Fill Client Id
     const clientIdInput = authenticatedPage.locator('label:has-text("Client Id") ~ input, input[name="clientId"], input#clientId').first();

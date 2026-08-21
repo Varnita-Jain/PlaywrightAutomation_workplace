@@ -1,7 +1,7 @@
 const { test, expect } = require('../../fixtures/fixtures');
 const { FacilitiesPage } = require('../../pages/Warehouse/facilities.page');
 
-test.describe.skip('Warehouse / Facilities Flow', () => {
+test.describe('Warehouse / Facilities Flow', () => {
 
   test('should navigate to Facilities page successfully', async ({ authenticatedPage, baseURL, clientId }) => {
     console.log(`\n=== Running Facilities Test for: ${clientId} ===`);

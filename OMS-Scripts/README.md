@@ -72,7 +72,7 @@ The framework supports a wide variety of execution combinations, allowing you to
 ### Step 1: Seed the Data Pool (Recommended)
 Before running the tests, generate fresh orders to guarantee test independence and speed. The seeding script hits the Shopify API and polls the HotWax OMS to ensure the webhooks have successfully synced the data.
 
-**Seed 1 order for the default client (krewe-uat):**
+**Seed 1 order for the default client (client-id-uat):**
 ```bash
 npm run test:oms:seed
 ```
@@ -89,9 +89,9 @@ CLIENT=adoc-sv-uat NUM_ORDERS=6 npm run test:oms:seed
 npx playwright test
 ```
 
-**2. Run a Specific Client (e.g., Krewe on Chromium)**
+**2. Run a Specific Client (e.g., Client A on Chromium)**
 ```bash
-CLIENT=krewe-uat npx playwright test --project="krewe-uat - Chromium"
+CLIENT=client-id-uat npx playwright test --project="client-id-uat - Chromium"
 ```
 
 **3. Run a Specific Flow (Specific File)**

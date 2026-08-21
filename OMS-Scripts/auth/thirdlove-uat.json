@@ -1,18 +1,8 @@
 {
   "cookies": [
     {
-      "name": "JSESSIONID",
-      "value": "58AA54801E98EECF26B6EF1DB5075EAF.jvm1",
-      "domain": "thirdlove-uat.hotwax.io",
-      "path": "/webtools",
-      "expires": -1,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
       "name": "SESSION_TIMEOUT",
-      "value": "1786950909307_43200",
+      "value": "1787293859311_43200",
       "domain": "thirdlove-uat.hotwax.io",
       "path": "/webtools/control/checkLogin",
       "expires": -1,
@@ -21,20 +11,30 @@
       "sameSite": "Lax"
     },
     {
-      "name": "JSESSIONID",
-      "value": "5F7F30D3C238F2FC0D8002A0D7713B8B.jvm1",
+      "name": "SESSION_TIMEOUT",
+      "value": "1787293859926_43200",
       "domain": "thirdlove-uat.hotwax.io",
-      "path": "/commerce",
+      "path": "/commerce/control",
       "expires": -1,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
-      "name": "SESSION_TIMEOUT",
-      "value": "1786950910099_43200",
+      "name": "JSESSIONID",
+      "value": "21DA857D7E3AB90878F23FAEA4800F68.jvm1",
       "domain": "thirdlove-uat.hotwax.io",
-      "path": "/commerce/control",
+      "path": "/webtools",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "FD4D3791126E1BA1506D4B2363C7E310.jvm1",
+      "domain": "thirdlove-uat.hotwax.io",
+      "path": "/commerce",
       "expires": -1,
       "httpOnly": true,
       "secure": true,

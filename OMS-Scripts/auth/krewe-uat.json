@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "SESSION_TIMEOUT",
-      "value": "1787028881595_43200",
+      "value": "1787289411613_43200",
       "domain": "krewe-uat.hotwax.io",
       "path": "/webtools/control/checkLogin",
       "expires": -1,
@@ -12,7 +12,7 @@
     },
     {
       "name": "SESSION_TIMEOUT",
-      "value": "1787028882268_43200",
+      "value": "1787289412207_43200",
       "domain": "krewe-uat.hotwax.io",
       "path": "/commerce/control",
       "expires": -1,
@@ -22,7 +22,7 @@
     },
     {
       "name": "JSESSIONID",
-      "value": "7BDC87A1151AD9BEFD071CD651453C1D.jvm1",
+      "value": "8D9B1DB35291C1A3A2A40291B91211A9.jvm1",
       "domain": "krewe-uat.hotwax.io",
       "path": "/webtools",
       "expires": -1,
@@ -32,7 +32,7 @@
     },
     {
       "name": "JSESSIONID",
-      "value": "BA4870C756EB9CA536E4845A2CDCC433.jvm1",
+      "value": "36654147E64EF18150E5A66762AEF185.jvm1",
       "domain": "krewe-uat.hotwax.io",
       "path": "/commerce",
       "expires": -1,

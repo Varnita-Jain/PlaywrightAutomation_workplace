@@ -70,7 +70,7 @@ test.describe('Warehouse Inbound Shipments - Negative Coverage', () => {
     const tableIdColumn = authenticatedPage.locator('table tbody tr td:first-child').first();
     
     // If the table is visible, it means the API failure didn't properly clear the old state (this would be a bug, but we assert it doesn't happen)
-    await authenticatedPage.screenshot({ path: '/Users/varnitajain/.gemini/antigravity-ide/brain/44bc00db-8db8-4350-8684-73c60fa22534/warehouse-error-screenshot.png', fullPage: true });
+    await authenticatedPage.screenshot({ path: 'warehouse-error-screenshot.png', fullPage: true });
     await expect(tableIdColumn).not.toBeVisible();
     
     // The safest graceful degradation is showing no results

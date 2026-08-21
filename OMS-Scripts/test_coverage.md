@@ -7,7 +7,7 @@ This document outlines the current test automation coverage for the OMS Playwrig
 The OMS automation suite has been heavily refactored into an **Atomic Data Pooling Architecture** allowing tests to run entirely independently and securely in parallel.
 
 ### Supported Flows
-All of the following flows are fully automated and utilize the `pooledOrder` fixture to dynamically consume unique orders. They all feature dynamic webhook polling, graceful UI fallbacks, and **full cross-client localization** (no hardcoded English strings), allowing the same scripts to run against Panama, El Salvador, Costa Rica, Thirdlove, and Krewe environments seamlessly:
+All of the following flows are fully automated and utilize the `pooledOrder` fixture to dynamically consume unique orders. They all feature dynamic webhook polling, graceful UI fallbacks, and **full cross-client localization** (no hardcoded English strings), allowing the same scripts to run against Client A, Client B, Client C, Client D, and Client E environments seamlessly:
 
 | Test Case / Flow | Spec File | Coverage Status | Actions Performed |
 |-------------------|-----------|-----------------|-------------------|
@@ -28,10 +28,10 @@ Generates organic orders via the Shopify REST API and places them in `data/poole
 npm run test:oms:seed
 ```
 
-**2. Run Specific Flow (Example: Release Order on Krewe)**
+**2. Run Specific Flow (Example: Release Order on Client A)**
 Runs a single test flow against a specific client project, demonstrating data pooling consumption:
 ```bash
-CLIENT=krewe-uat npx playwright test "tests/Order_Types/Sales_Order/releasesalesorder.spec.js" --project="krewe-uat - Chromium" --headed
+CLIENT=client-id-uat npx playwright test "tests/Order_Types/Sales_Order/releasesalesorder.spec.js" --project="client-id-uat - Chromium" --headed
 ```
 
 **3. Run Full Parallel Suite (All Clients & Flows)**

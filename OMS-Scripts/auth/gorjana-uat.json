@@ -1,18 +1,8 @@
 {
   "cookies": [
     {
-      "name": "JSESSIONID",
-      "value": "B6508406FD1EDEE079336A72D34148C6.jvm1",
-      "domain": "gorjana-uat.hotwax.io",
-      "path": "/webtools",
-      "expires": -1,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
       "name": "SESSION_TIMEOUT",
-      "value": "1786950869211_43200",
+      "value": "1787292430357_43200",
       "domain": "gorjana-uat.hotwax.io",
       "path": "/webtools/control/checkLogin",
       "expires": -1,
@@ -21,20 +11,30 @@
       "sameSite": "Lax"
     },
     {
-      "name": "JSESSIONID",
-      "value": "A9D932AC09ACAE6CA108B9C5286E3EBD.jvm1",
+      "name": "SESSION_TIMEOUT",
+      "value": "1787292431190_43200",
       "domain": "gorjana-uat.hotwax.io",
-      "path": "/commerce",
+      "path": "/commerce/control",
       "expires": -1,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
-      "name": "SESSION_TIMEOUT",
-      "value": "1786950870009_43200",
+      "name": "JSESSIONID",
+      "value": "EB758CD8E13110D1D6A4991F27AE5B9E.jvm1",
       "domain": "gorjana-uat.hotwax.io",
-      "path": "/commerce/control",
+      "path": "/webtools",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "1F09996638849CE99D80DF2A2699BF5E.jvm1",
+      "domain": "gorjana-uat.hotwax.io",
+      "path": "/commerce",
       "expires": -1,
       "httpOnly": true,
       "secure": true,

@@ -21,7 +21,7 @@ const { getClientConfig } = require('../config/clients');
 function createShopifyOrder(clientId) {
     return new Promise((resolve, reject) => {
         const config = getClientConfig(clientId);
-        if (!config || !config.shopify || !config.shopify.accessToken || config.shopify.accessToken.includes('newera')) {
+        if (!config || !config.shopify || !config.shopify.accessToken) {
             return reject(new Error(`[Shopify API] Invalid or missing Shopify credentials for ${clientId}.`));
         }
 

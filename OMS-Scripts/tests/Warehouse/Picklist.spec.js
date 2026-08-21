@@ -1,6 +1,6 @@
 const { test, expect } = require('../../fixtures/fixtures');
 
-test.describe.skip('Warehouse / Picklist Flow', () => {
+test.describe('Warehouse / Picklist Flow', () => {
   test('should navigate to Picklist, apply filters, and verify results', async ({ authenticatedPage, baseURL }) => {
     const url = new URL(baseURL);
 

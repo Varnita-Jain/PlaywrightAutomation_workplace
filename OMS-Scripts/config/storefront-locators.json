@@ -1,0 +1,35 @@
+{
+  "default": {
+    "passwordModalOpen": ".password-enter__button, .js-modal-open-login-modal",
+    "passwordInput": "input[type='password'], input[name='password'], #password",
+    "passwordSubmit": "button[type='submit'], .password-dialog__submit-button",
+    "categoryLink": "a[href*='/collections/'], a[href*='category'], nav a",
+    "productLink": "a[href*='/products/']:not([href*='quick']):not(:has-text('Vista rápida'))",
+    "sizeSelector": "button, label, div",
+    "addToCartBtn": "button[name='add'], button.add-to-cart-button, #AddToCart",
+    "cartDrawer": ".drawer__inner, #CartDrawer, .cart-drawer, .site-header__cart-count",
+    "checkoutBtn": "button[name='checkout'], .cart__checkout-button",
+    "emailInput": "#email, input[name='email'], input[name='checkout[email]']",
+    "firstNameInput": "input[name='firstName'], input[name='checkout[shipping_address][first_name]']",
+    "lastNameInput": "input[name='lastName'], input[name='checkout[shipping_address][last_name]']",
+    "addressInput": "input[name='address1'], input[name='checkout[shipping_address][address1]']",
+    "cityInput": "input[name='city'], input[name='checkout[shipping_address][city]']",
+    "postalCodeInput": "input[name='postalCode'], input[name='checkout[shipping_address][zip]']",
+    "phoneInput": "input[name='phone'], input[name='checkout[shipping_address][phone]']",
+    "continueToShippingBtn": "button[type='submit']:has-text('shipping'), button[type='submit']:has-text('envíos'), #continue_button",
+    "continueToPaymentBtn": "button[type='submit']:has-text('payment'), button[type='submit']:has-text('pago'), #continue_button",
+    "payNowBtn": "button[type='submit']:has-text('Pay now'), button[type='submit']:has-text('Pagar ahora'), #continue_button"
+  },
+  "mephisto-uat": {
+    "categoryLink": "a[href*='/collections/']"
+  },
+  "adoc-pa-uat": {
+    "categoryLink": "a[href*='/collections/accesorios']"
+  },
+  "thirdlove-uat": {
+    "categoryLink": "a[href*='/collections/all']"
+  },
+  "newera-uat": {
+    "categoryLink": "a:has-text('Headwear')"
+  }
+}

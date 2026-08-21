@@ -88,7 +88,7 @@ class BaseSalesOrderPage {
     const searchUrl = `${url.origin}/commerce/control/FindOrder?keyword=${encodeURIComponent(orderId)}&userSearchPrefTypeId=SALES_ORDER_QUERY`;
     
     console.log(`Searching for specific order: ${orderId}...`);
-    // Find the row containing the text of the orderId (e.g. #KREWE39189), because the href attribute uses the internal HotWax ID (M106555)
+    // Find the row containing the text of the orderId (e.g. #CLIENT39189), because the href attribute uses the internal HotWax ID (M106555)
     const targetRow = this.page.locator('tbody tr').filter({ hasText: orderId }).first();
     let isFound = false;
 

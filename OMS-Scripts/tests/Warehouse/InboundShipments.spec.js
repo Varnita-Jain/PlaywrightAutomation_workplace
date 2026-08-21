@@ -1,6 +1,6 @@
 const { test, expect } = require('../../fixtures/fixtures');
 
-test.describe.skip('Warehouse / Inbound Shipments Flow', () => {
+test.describe('Warehouse / Inbound Shipments Flow', () => {
   test('should navigate to Inbound Shipments, apply filters, and verify results', async ({ authenticatedPage, baseURL }) => {
     const url = new URL(baseURL);
 

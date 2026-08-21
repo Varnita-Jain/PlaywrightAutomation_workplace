@@ -52,7 +52,7 @@ test.describe.serial('Cancel Order OMS - Negative Coverage', () => {
 
       console.log('Step 4: Verifying order status did NOT change to Cancelled...');
       await authenticatedPage.waitForTimeout(2000); // Wait a bit for page to render after reload
-      await authenticatedPage.screenshot({ path: '/Users/varnitajain/.gemini/antigravity-ide/brain/44bc00db-8db8-4350-8684-73c60fa22534/error-screenshot.png', fullPage: true });
+      await authenticatedPage.screenshot({ path: 'error-screenshot.png', fullPage: true });
       const statusRow = await cancelOrderPage.getOrderStatusRow();
       
       // The status should NOT be Cancelled because our 500 error blocked the backend update
